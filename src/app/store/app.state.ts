@@ -1,7 +1,20 @@
-
-
-export interface AppState {
-
+export enum TaskStatus {
+  ACTIVE = 'ACTIVE',
+  DONE = 'DONE'
 }
 
-export const initialState : AppState = {};
+export interface Task {
+  id: number;
+  title: string;
+  description: string;
+  status: TaskStatus;
+  createdAt: Date;
+}
+
+export interface AppState {
+  tasks: Task[];
+}
+
+export const initialState: AppState = {
+  tasks: []
+};

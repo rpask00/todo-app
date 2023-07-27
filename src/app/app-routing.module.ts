@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {TodoComponent} from "./todo/todo.component";
+import {TaskFormComponent} from "./todo/task-form/task-form.component";
 
 const routes: Routes = [
   {
@@ -17,6 +18,14 @@ const routes: Routes = [
       {
         path: 'active',
         component: TodoComponent
+      },
+      {
+        path: 'new',
+        component: TaskFormComponent
+      },
+      {
+        path: 'edit/:id',
+        component: TaskFormComponent
       },
       {
         path: '*/',

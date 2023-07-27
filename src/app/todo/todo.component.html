@@ -1,1 +1,4 @@
-<p>todo works!</p>
+<ul *ngIf="tasks$ | async as tasks">
+  <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+</ul>
+

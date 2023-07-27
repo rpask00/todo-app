@@ -7,7 +7,7 @@ import {StoreModule} from "@ngrx/store";
 import {appReducer} from "./store/app.reducer";
 import {AppEffects} from "./store/app.effects";
 import {EffectsModule} from "@ngrx/effects";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
@@ -16,12 +16,25 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatListModule} from "@angular/material/list";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import { TodoComponent } from './todo/todo.component';
+import {TodoComponent} from './todo/todo.component';
+import {AppState} from "./store/app.state";
+import { TaskComponent } from './todo/task/task.component';
+import { TaskFormComponent } from './todo/task-form/task-form.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+
+export interface GlobalState {
+  root: AppState
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent
+    TodoComponent,
+    TaskComponent,
+    TaskFormComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +51,11 @@ import { TodoComponent } from './todo/todo.component';
     MatExpansionModule,
     MatListModule,
     MatMenuModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
