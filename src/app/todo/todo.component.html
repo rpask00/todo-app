@@ -1,4 +1,20 @@
-<ul *ngIf="tasks$ | async as tasks">
-  <app-task *ngFor="let task of tasks" [task]="task"></app-task>
-</ul>
+<div *ngIf="tasks$ | async as tasks" class="todo-container">
+
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let task of tasks">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <input type="checkbox">
+          {{task.title}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{task.description.substring(0, 50)}} {{task.description.length > 50 ? '...' : ''}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>{{task.description}}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <h1 *ngIf="tasks.length == 0"> No tasks were found.</h1>
+</div>
 

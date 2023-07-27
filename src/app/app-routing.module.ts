@@ -8,20 +8,20 @@ const routes: Routes = [
     path: 'todo',
     children: [
       {
-        path: 'all',
-        component: TodoComponent
-      },
-      {
-        path: ':state',
-        component: TodoComponent
-      },
-      {
         path: 'new',
         component: TaskFormComponent
       },
       {
         path: 'edit/:id',
         component: TaskFormComponent
+      },
+      {
+        path: 'all',
+        component: TodoComponent
+      },
+      {
+        path: ':state',
+        component: TodoComponent
       },
       {
         path: '*/',

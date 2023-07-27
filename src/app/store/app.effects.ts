@@ -6,6 +6,57 @@ import {catchError, map, of, switchMap, tap} from "rxjs";
 import {selectTasks} from "./app.selectors";
 import {GlobalState} from "../app.module";
 
+const dummyTasks = [
+  {
+    "title": "Grocery shopping",
+    "description": "Buy milk, bread, eggs, and fruits.",
+    "createdAt": "2023-07-10T10:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "title": "Write a report",
+    "description": "Prepare a report from the client meeting.",
+    "createdAt": "2023-07-09T15:30:00Z",
+    "status": "DONE"
+  },
+  {
+    "title": "Clean the apartment",
+    "description": "Vacuum, mop the floors, and tidy up the bathroom.",
+    "createdAt": "2023-07-11T09:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "title": "Create a presentation",
+    "description": "Prepare a presentation for the team meeting.",
+    "createdAt": "2023-07-12T14:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "title": "Read a book",
+    "description": "Finish reading an interesting book.",
+    "createdAt": "2023-07-13T16:45:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "title": "Exercise",
+    "description": "Do a series of exercises at the gym.",
+    "createdAt": "2023-07-14T11:30:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "title": "Plan the vacation",
+    "description": "Prepare a plan for the upcoming vacation.",
+    "createdAt": "2023-07-15T12:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "title": "Visit friends",
+    "description": "Go and visit friends over the weekend.",
+    "createdAt": "2023-07-16T09:30:00Z",
+    "status": "DONE"
+  }
+]
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,10 +72,14 @@ export class AppEffects {
     this._actions$.pipe(
       ofType(loadTasks),
       map(() => {
-        const tasks = localStorage.getItem('tasks');
-        return loadTasksSuccess({tasks: tasks ? JSON.parse(tasks) : []});
+        let tasks = localStorage.getItem('tasks');
+        if (!tasks) {
+          localStorage.setItem('tasks', JSON.stringify(dummyTasks));
+          tasks = localStorage.getItem('tasks');
+        }
+        return loadTasksSuccess({tasks: tasks ? JSON.parse(tasks) : dummyTasks});
       }),
-      catchError(()=> of(loadTasksFailed()))
+      catchError(() => of(loadTasksFailed()))
     ))
 
 
