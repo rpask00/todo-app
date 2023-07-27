@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {TodoService} from "./todo.service";
+import {ActivatedRoute} from "@angular/router";
+import {map, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-todo',
@@ -7,12 +9,15 @@ import {TodoService} from "./todo.service";
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent {
-
   constructor(
-    private _todoService: TodoService
+    private _todoService: TodoService,
+    private _route: ActivatedRoute,
   ) {
+
   }
 
-  readonly tasks$ = this._todoService.tasks$;
-
+  readonly tasks$ = this._route.params.pipe(
+    map(params => params['state']),
+    switchMap(state => this._todoService.getTasks$(state))
+  )
 }

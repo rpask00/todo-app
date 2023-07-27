@@ -12,11 +12,7 @@ const routes: Routes = [
         component: TodoComponent
       },
       {
-        path: 'done',
-        component: TodoComponent
-      },
-      {
-        path: 'active',
+        path: ':state',
         component: TodoComponent
       },
       {

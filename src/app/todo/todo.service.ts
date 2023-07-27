@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {selectTasks} from "../store/app.selectors";
 import {GlobalState} from "../app.module";
 import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {Task} from "../store/app.state";
+import {TaskStatus} from "../store/app.state";
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +10,12 @@ import {Task} from "../store/app.state";
 export class TodoService {
 
 
-  readonly tasks$: Observable<Task[]> = this.store.select(selectTasks());
-
   constructor(
     private store: Store<GlobalState>,
   ) {
+  }
+
+  getTasks$(state?: TaskStatus) {
+    return  this.store.select(selectTasks(state))
   }
 }
