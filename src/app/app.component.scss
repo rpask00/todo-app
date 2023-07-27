@@ -1,0 +1,19 @@
+.app-container {
+  width: 100%;
+  height: calc(100% - var(--mat-toolbar-standard-height));
+  border: 1px solid #555;
+}
+
+.app-sidenav{
+  min-width: 300px;
+}
+
+
+mat-list-item span{
+  display: flex;
+  align-items: center;
+
+  mat-icon{
+    margin-right: 10px;
+  }
+}
