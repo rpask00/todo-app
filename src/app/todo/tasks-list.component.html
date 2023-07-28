@@ -1,4 +1,6 @@
 <div *ngIf="tasks$ | async as tasks" class="todo-container">
+  <h1>List of tasks</h1>
+
   <mat-accordion [multi]="true">
     <app-task
       (deleteTask)="deleteTask($event)"
