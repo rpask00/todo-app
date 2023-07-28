@@ -5,6 +5,7 @@ import {addTask, loadTasks, loadTasksFailed, loadTasksSuccess, modifyTask, remov
 import {catchError, map, of, switchMap, tap} from "rxjs";
 import {selectTasks} from "./app.selectors";
 import {GlobalState} from "../app.module";
+import {ToastrService} from "ngx-toastr";
 
 const dummyTasks = [
   {
@@ -73,6 +74,7 @@ export class AppEffects {
   constructor(
     private _actions$: Actions,
     private _store: Store<GlobalState>,
+    private _toastr: ToastrService
   ) {
   }
 
@@ -101,4 +103,27 @@ export class AppEffects {
       dispatch: false
     }
   )
+
+  showToast$ = createEffect(() =>
+      this._actions$.pipe(
+        ofType(addTask, modifyTask, removeTask),
+        tap((action) => {
+          switch (action.type) {
+            case addTask.type:
+              this._toastr.success('Task added successfully');
+              break;
+            case modifyTask.type:
+              this._toastr.info('Task modified successfully');
+              break;
+            case removeTask.type:
+              this._toastr.warning('Task removed successfully');
+              break;
+          }
+        })
+      ), {
+      dispatch: false
+    }
+  )
+
+
 }

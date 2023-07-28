@@ -25,6 +25,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {ToastrModule} from "ngx-toastr";
 
 export interface GlobalState {
   root: AppState
@@ -45,6 +46,9 @@ export interface GlobalState {
     }),
     EffectsModule.forRoot([AppEffects]),
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+    }),
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
