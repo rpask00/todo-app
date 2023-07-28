@@ -15,8 +15,8 @@
   <p>{{task.description}}</p>
   <section class="actions">
     <mat-checkbox (change)="changeTaskStatus.emit(task)" [checked]="task.status === 'DONE'">Mark as done.</mat-checkbox>
-    <section *ngIf="task.status == 'ACTIVE'">
-      <button style="margin-left: auto" (click)="editTask.emit(task)" mat-button>Edit</button>
+    <section>
+      <button style="margin-left: auto" (click)="editTask.emit(task)" mat-button *ngIf="task.status == 'ACTIVE'">Edit</button>
       <button mat-button (click)="deleteTask.emit(task)" color="warn">Delete</button>
     </section>
   </section>

@@ -5,12 +5,12 @@ import {map, switchMap} from "rxjs";
 import {Task} from "../store/app.state";
 
 @Component({
-  selector: 'app-todo',
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.scss'],
+  selector: 'app-tasks-list',
+  templateUrl: './tasks-list.component.html',
+  styleUrls: ['./tasks-list.component.scss'],
   providers: [TodoService]
 })
-export class TodoComponent {
+export class TasksListComponent {
   constructor(
     private _todoService: TodoService,
     private _route: ActivatedRoute,

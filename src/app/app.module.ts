@@ -16,7 +16,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatListModule} from "@angular/material/list";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {TodoComponent} from './todo/todo.component';
+import {TasksListComponent} from './todo/tasks-list.component';
 import {AppState} from "./store/app.state";
 import { TaskComponent } from './todo/task/task.component';
 import { TaskFormComponent } from './todo/task-form/task-form.component';
@@ -33,7 +33,7 @@ export interface GlobalState {
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent,
+    TasksListComponent,
     TaskComponent,
     TaskFormComponent
   ],

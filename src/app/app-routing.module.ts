@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {TodoComponent} from "./todo/todo.component";
+import {TasksListComponent} from "./todo/tasks-list.component";
 import {TaskFormComponent} from "./todo/task-form/task-form.component";
 
 const routes: Routes = [
@@ -17,11 +17,11 @@ const routes: Routes = [
       },
       {
         path: 'all',
-        component: TodoComponent
+        component: TasksListComponent
       },
       {
         path: ':state',
-        component: TodoComponent
+        component: TasksListComponent
       },
       {
         path: '',
