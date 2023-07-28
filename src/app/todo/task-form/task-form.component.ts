@@ -5,7 +5,7 @@ import {Store} from "@ngrx/store";
 import {GlobalState} from "../../app.module";
 import {firstValueFrom} from "rxjs";
 import {selectTaskById, selectTasks} from "../../store/app.selectors";
-import {addTask} from "../../store/app.actions";
+import {addTask, modifyTask} from "../../store/app.actions";
 
 @Component({
   selector: 'app-task-form',
@@ -43,8 +43,26 @@ export class TaskFormComponent implements OnInit {
 
 
   submit() {
-    this._store.dispatch(addTask({task: this.form.value}));
+    if (this.taskId) {
+      this._store.dispatch(modifyTask({
+        task: {
+          ...this.form.value,
+          id: this.taskId,
+        }
+      }));
+    } else {
+      this._store.dispatch(addTask({
+        task: {
+          ...this.form.value,
+          id: this.randomId(),
+        }
+      }));
+    }
     this.router.navigateByUrl('/todo/all');
+  }
+
+  randomId() {
+    return Math.floor(Math.random() * 10000000);
   }
 
 

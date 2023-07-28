@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input} from '@angular/core';
 import { Task } from 'src/app/store/app.state';
 
 @Component({
@@ -8,4 +8,6 @@ import { Task } from 'src/app/store/app.state';
 })
 export class TaskComponent {
   @Input() task?: Task;
+
+  changeTaskStatus = new EventEmitter<number>();
 }

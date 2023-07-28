@@ -1,5 +1,12 @@
-
-<div>
-  <h1>{{task?.title}}</h1>
-  <p>{{task?.description}}</p>
-</div>
+<mat-expansion-panel *ngIf="task" [style.opacity]="task.status === 'DONE' ? '50%' : ''">
+  <mat-expansion-panel-header >
+    <mat-panel-title [style.text-decoration]="task.status === 'DONE' ? 'line-through' : ''">
+      {{task.title}}
+    </mat-panel-title>
+    <mat-panel-description [style.text-decoration]="task.status === 'DONE' ? 'line-through' : ''">
+      {{task.description.substring(0, 50)}} {{task.description.length > 50 ? '...' : ''}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <p>{{task.description}}</p>
+  <mat-checkbox (change)="changeTaskStatus.emit(task.id)" [checked]="task.status === 'DONE'" >Mark as done.</mat-checkbox>
+</mat-expansion-panel>
