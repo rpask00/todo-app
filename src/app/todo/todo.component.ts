@@ -7,7 +7,8 @@ import {Task} from "../store/app.state";
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.scss']
+  styleUrls: ['./todo.component.scss'],
+  providers: [TodoService]
 })
 export class TodoComponent {
   constructor(

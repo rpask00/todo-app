@@ -24,14 +24,16 @@ const routes: Routes = [
         component: TodoComponent
       },
       {
-        path: '*/',
+        path: '',
         redirectTo: 'all',
+        pathMatch: 'full'
       }
     ]
   },
   {
-    path: '*/',
+    path: '',
     redirectTo: 'todo',
+    pathMatch: 'full'
   }
 ];
 

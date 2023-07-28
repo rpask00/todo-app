@@ -6,9 +6,7 @@ import {Task, TaskStatus} from "../store/app.state";
 import {modifyTask, removeTask} from "../store/app.actions";
 import {Router} from "@angular/router";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TodoService {
 
 

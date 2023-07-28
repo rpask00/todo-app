@@ -1,10 +1,14 @@
-<mat-expansion-panel *ngIf="task" [style.opacity]="task.status === 'DONE' ? '50%' : ''">
+<mat-expansion-panel *ngIf="task" [style.opacity]="task.status === 'DONE' ? '50%' : ''"
+                     [expanded]="localStorage.getItem('opened-' + task.id) === 'true'"
+                     (expandedChange)="
+                     localStorage.setItem('opened-' + task.id, $event.toString())"
+>
   <mat-expansion-panel-header>
     <mat-panel-title [style.text-decoration]="task.status === 'DONE' ? 'line-through' : ''">
       {{task.title}}
     </mat-panel-title>
     <mat-panel-description [style.text-decoration]="task.status === 'DONE' ? 'line-through' : ''">
-      <b style="width: 110px">{{task.createdAt ? (task.createdAt | date): '---'}}</b>
+      <b style="width: 110px">{{task.createdAt ? (task.createdAt | date) : '---'}}</b>
       {{task.description.substring(0, 50)}} {{task.description.length > 50 ? '...' : ''}}
     </mat-panel-description>
   </mat-expansion-panel-header>
@@ -16,5 +20,4 @@
       <button mat-button (click)="deleteTask.emit(task)" color="warn">Delete</button>
     </section>
   </section>
-
 </mat-expansion-panel>
