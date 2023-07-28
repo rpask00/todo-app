@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input} from '@angular/core';
-import { Task } from 'src/app/store/app.state';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Task} from 'src/app/store/app.state';
 
 @Component({
   selector: 'app-task',
@@ -8,6 +8,7 @@ import { Task } from 'src/app/store/app.state';
 })
 export class TaskComponent {
   @Input() task?: Task;
-
-  changeTaskStatus = new EventEmitter<number>();
+  @Output() changeTaskStatus = new EventEmitter<Task>();
+  @Output() deleteTask = new EventEmitter<Task>();
+  @Output() editTask = new EventEmitter<Task>();
 }

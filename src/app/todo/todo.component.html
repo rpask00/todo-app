@@ -1,7 +1,9 @@
 <div *ngIf="tasks$ | async as tasks" class="todo-container">
-
   <mat-accordion>
-    <app-task [task]="task" *ngFor="let task of tasks"></app-task>
+    <app-task
+      (deleteTask)="deleteTask($event)"
+      (editTask)="editTask($event)"
+      (changeTaskStatus)="changeTaskStatus($event)" [task]="task" *ngFor="let task of tasks"></app-task>
   </mat-accordion>
 
   <h1 *ngIf="tasks.length == 0"> No tasks were found.</h1>

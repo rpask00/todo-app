@@ -1,12 +1,20 @@
 <mat-expansion-panel *ngIf="task" [style.opacity]="task.status === 'DONE' ? '50%' : ''">
-  <mat-expansion-panel-header >
+  <mat-expansion-panel-header>
     <mat-panel-title [style.text-decoration]="task.status === 'DONE' ? 'line-through' : ''">
       {{task.title}}
     </mat-panel-title>
     <mat-panel-description [style.text-decoration]="task.status === 'DONE' ? 'line-through' : ''">
+      <b style="width: 110px">{{task.createdAt ? (task.createdAt | date): '---'}}</b>
       {{task.description.substring(0, 50)}} {{task.description.length > 50 ? '...' : ''}}
     </mat-panel-description>
   </mat-expansion-panel-header>
   <p>{{task.description}}</p>
-  <mat-checkbox (change)="changeTaskStatus.emit(task.id)" [checked]="task.status === 'DONE'" >Mark as done.</mat-checkbox>
+  <section class="actions">
+    <mat-checkbox (change)="changeTaskStatus.emit(task)" [checked]="task.status === 'DONE'">Mark as done.</mat-checkbox>
+    <section *ngIf="task.status == 'ACTIVE'">
+      <button style="margin-left: auto" (click)="editTask.emit(task)" mat-button>Edit</button>
+      <button mat-button (click)="deleteTask.emit(task)" color="warn">Delete</button>
+    </section>
+  </section>
+
 </mat-expansion-panel>

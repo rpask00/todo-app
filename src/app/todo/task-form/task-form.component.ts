@@ -25,7 +25,6 @@ export class TaskFormComponent implements OnInit {
 
   async ngOnInit() {
     if (this.taskId) {
-      const tasks = this._store.select(selectTasks())
       const task = await firstValueFrom(this._store.select(selectTaskById(this.taskId)))
       if (task) {
         this.form.patchValue(task);
