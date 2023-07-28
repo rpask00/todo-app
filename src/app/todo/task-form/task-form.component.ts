@@ -29,15 +29,13 @@ export class TaskFormComponent implements OnInit {
       if (task) {
         this.form.patchValue(task);
       }
-
     }
   }
-
 
   form: FormGroup = this.fb.group({
     title: [''],
     description: [''],
-    createdAt: [''],
+    dueDate: [''],
   });
 
 
@@ -54,6 +52,7 @@ export class TaskFormComponent implements OnInit {
         task: {
           ...this.form.value,
           id: this.randomId(),
+          createdAt: new Date(),
         }
       }));
     }

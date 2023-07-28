@@ -18,8 +18,11 @@ export class TasksListComponent {
 
   }
 
-  readonly tasks$ = this._route.params.pipe(
-    map(params => params['state']),
+  readonly state$ = this._route.params.pipe(
+    map(params => params['state'] || '')
+  )
+
+  readonly tasks$ = this.state$.pipe(
     switchMap(state => this._todoService.getTasks$(state)),
     map(tasks => tasks.sort((a, b) =>
       new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()

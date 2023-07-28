@@ -9,6 +9,7 @@ export interface Task {
   description: string;
   status: TaskStatus;
   createdAt: Date;
+  dueDate: Date;
 }
 
 export interface AppState {

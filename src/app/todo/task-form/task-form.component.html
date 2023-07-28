@@ -12,8 +12,8 @@
 
 
   <mat-form-field>
-    <mat-label>Choose a date</mat-label>
-    <input formControlName="createdAt" matInput [matDatepicker]="picker">
+    <mat-label>Select a due date</mat-label>
+    <input formControlName="dueDate" matInput [matDatepicker]="picker">
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
