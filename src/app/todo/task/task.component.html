@@ -9,14 +9,14 @@
     </mat-panel-title>
     <mat-panel-description [style.text-decoration]="task.status === 'DONE' ? 'line-through' : ''">
       <b class="task-dueDate" style="width: 110px">{{task.dueDate ? (task.dueDate | date) : '---'}}</b>
-      <span class="task-description">{{task.description.substring(0, 50)}} {{task.description.length > 50 ? '...' : ''}}</span>
+      <span class="task-description">{{task.description }}</span>
     </mat-panel-description>
   </mat-expansion-panel-header>
   <p>{{task.description}}</p>
   <section class="actions">
     <mat-checkbox (change)="changeTaskStatus.emit(task)" [checked]="task.status === 'DONE'">Mark as done.</mat-checkbox>
     <section>
-      <button style="margin-left: auto" (click)="editTask.emit(task)" mat-button *ngIf="task.status == 'ACTIVE'">Edit</button>
+      <button mat-button (click)="editTask.emit(task)" *ngIf="task.status == 'ACTIVE'">Edit</button>
       <button mat-button (click)="deleteTask.emit(task)" color="warn">Delete</button>
     </section>
   </section>

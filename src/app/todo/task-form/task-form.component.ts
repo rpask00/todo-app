@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {GlobalState} from "../../app.module";
@@ -34,7 +34,7 @@ export class TaskFormComponent implements OnInit {
   }
 
   form: FormGroup = this.fb.group({
-    title: [''],
+    title: ['', Validators.required],
     description: [''],
     dueDate: [''],
   });

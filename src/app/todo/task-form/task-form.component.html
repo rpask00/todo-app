@@ -12,7 +12,6 @@
     <textarea formControlName="description" matInput placeholder="Placeholder"></textarea>
   </mat-form-field>
 
-
   <mat-form-field>
     <mat-label>Select a due date</mat-label>
     <input formControlName="dueDate" matInput [matDatepicker]="picker">
@@ -21,8 +20,6 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-
-  <button (click)="submit()" mat-raised-button color="primary">Submit</button>
-
+  <button [disabled]="form.invalid"  (click)="submit()" mat-raised-button color="primary">Submit</button>
 </form>
 

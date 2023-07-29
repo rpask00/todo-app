@@ -9,6 +9,17 @@
   }
 }
 
+mat-panel-description{
+  max-width: 60%;
+}
+
+.task-description {
+  width: calc(100% - 110px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 
 @media (max-width: 600px) {
   .task-description {
