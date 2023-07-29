@@ -5,16 +5,23 @@
   padding-top: 30px;
 }
 
-.app-sidenav{
+.app-sidenav {
   min-width: 300px;
 }
 
 
-mat-list-item span{
+mat-list-item span {
   display: flex;
   align-items: center;
 
-  mat-icon{
+  mat-icon {
     margin-right: 10px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .app-container {
+    height: calc(100% - var(--mat-toolbar-mobile-height));
   }
 }

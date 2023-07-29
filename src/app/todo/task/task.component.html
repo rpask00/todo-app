@@ -8,8 +8,8 @@
       {{task.title}}
     </mat-panel-title>
     <mat-panel-description [style.text-decoration]="task.status === 'DONE' ? 'line-through' : ''">
-      <b style="width: 110px">{{task.dueDate ? (task.dueDate | date) : '---'}}</b>
-      {{task.description.substring(0, 50)}} {{task.description.length > 50 ? '...' : ''}}
+      <b class="task-dueDate" style="width: 110px">{{task.dueDate ? (task.dueDate | date) : '---'}}</b>
+      <span class="task-description">{{task.description.substring(0, 50)}} {{task.description.length > 50 ? '...' : ''}}</span>
     </mat-panel-description>
   </mat-expansion-panel-header>
   <p>{{task.description}}</p>

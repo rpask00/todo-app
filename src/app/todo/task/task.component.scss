@@ -1,8 +1,17 @@
-.actions{
+.actions {
   display: flex;
   justify-content: space-between;
 }
 
-mat-panel-title{
-  font-size: 1.2rem;
+@media (min-width: 600px) {
+  mat-panel-title {
+    font-size: 1.2rem;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .task-description {
+    display: none;
+  }
 }

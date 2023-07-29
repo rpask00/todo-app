@@ -4,8 +4,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {GlobalState} from "../../app.module";
 import {firstValueFrom} from "rxjs";
-import {selectTaskById, selectTasks} from "../../store/app.selectors";
+import {selectTaskById} from "../../store/app.selectors";
 import {addTask, modifyTask} from "../../store/app.actions";
+import {TaskStatus} from "../../store/app.state";
 
 @Component({
   selector: 'app-task-form',
@@ -13,13 +14,13 @@ import {addTask, modifyTask} from "../../store/app.actions";
   styleUrls: ['./task-form.component.scss']
 })
 export class TaskFormComponent implements OnInit {
-  readonly taskId = parseInt(this.route.snapshot.paramMap.get('id') || '0', 10);
+  readonly taskId = parseInt(this._route.snapshot.paramMap.get('id') || '0', 10);
 
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
+    private _route: ActivatedRoute,
+    private _router: Router,
     private _store: Store<GlobalState>,
-    private router: Router,
   ) {
   }
 
@@ -53,15 +54,14 @@ export class TaskFormComponent implements OnInit {
           ...this.form.value,
           id: this.randomId(),
           createdAt: new Date(),
+          status: TaskStatus.ACTIVE
         }
       }));
     }
-    this.router.navigateByUrl('/todo/all');
+    this._router.navigateByUrl('/todo/all');
   }
 
   randomId() {
     return Math.floor(Math.random() * 10000000);
   }
-
-
 }
