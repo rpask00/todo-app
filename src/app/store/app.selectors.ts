@@ -12,5 +12,5 @@ export const selectTasks = (status?: TaskStatus) => createSelector(
 
 export const selectTaskById = (id: number) => createSelector(
   selectTasks(),
-  (tasks: Task[]) => tasks?.find((task) => task.id === id)
+  (tasks: Task[]) => tasks.find((task) => task.id === id)
 )
