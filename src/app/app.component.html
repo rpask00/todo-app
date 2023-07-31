@@ -7,8 +7,8 @@
 
 
 <mat-drawer-container class="app-container" autosize>
-  <mat-drawer #drawer class="app-sidenav" mode="side">
-    <mat-nav-list >
+  <mat-drawer #drawer class="app-sidenav" [mode]="window.innerWidth > 600 ? 'side' : 'over'">
+    <mat-nav-list>
       <mat-list-item routerLink="todo/all">
         <span><mat-icon class="mr-3">view_list</mat-icon><span>All</span></span>
       </mat-list-item>
@@ -29,7 +29,7 @@
   </mat-drawer>
 
   <div class="app-sidenav-content">
-      <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>
 

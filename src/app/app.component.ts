@@ -9,6 +9,8 @@ import {loadTasks} from "./store/app.actions";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  protected readonly window = window;
+
   constructor(
     private _store: Store<GlobalState>,
   ) {
@@ -17,4 +19,5 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this._store.dispatch(loadTasks())
   }
+
 }
