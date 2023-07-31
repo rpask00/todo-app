@@ -77,7 +77,7 @@ const dummyTasks = [
   {
     "id": 8,
     "title": "Grocery shopping",
-    "description": "Buy milk, bread, eggs, and fruits.",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
     "createdAt": "2023-06-10T10:00:00Z",
     "dueDate": "2023-07-10T10:00:00Z",
     "status": "ACTIVE"
