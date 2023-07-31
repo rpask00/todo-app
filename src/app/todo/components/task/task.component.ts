@@ -1,5 +1,5 @@
 import {Component, effect, EventEmitter, Input, OnInit, Output, signal} from '@angular/core';
-import {Task} from 'src/app/store/app.state';
+import {Task} from 'src/app/todo/store/todo.state';
 
 @Component({
   selector: 'app-task',

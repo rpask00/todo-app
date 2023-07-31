@@ -11,10 +11,10 @@ import {
   modifyTaskSuccess,
   removeTask,
   removeTaskSuccess
-} from "./app.actions";
+} from "./todo.actions";
 import {catchError, map, of, switchMap, tap} from "rxjs";
-import {selectTasks} from "./app.selectors";
-import {GlobalState} from "../app.module";
+import {selectTasks} from "./todo.selectors";
+import {AppState} from "../../app.module";
 import {ToastrService} from "ngx-toastr";
 
 const dummyTasks = [
@@ -87,11 +87,11 @@ const dummyTasks = [
 @Injectable({
   providedIn: 'root'
 })
-export class AppEffects {
+export class TodoEffects {
 
   constructor(
     private _actions$: Actions,
-    private _store: Store<GlobalState>,
+    private _store: Store<AppState>,
     private _toastr: ToastrService
   ) {
   }

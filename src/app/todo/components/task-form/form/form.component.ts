@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Task, TaskStatus} from "../../../store/app.state";
+import {Task, TaskStatus} from "../../../store/todo.state";
 
 @Component({
   selector: 'app-form',

@@ -1,13 +1,12 @@
 <div *ngIf="tasks$ | async as tasks" class="todo-container">
-  <h1>List of tasks</h1>
-
+  <h1>List of {{state$ | async | lowercase}} tasks</h1>
   <mat-accordion [multi]="true">
     <app-task
-      (deleteTask)="deleteTask($event)"
+      (deleteTask)="removeTask($event)"
       (editTask)="editTask($event)"
       (changeTaskStatus)="changeTaskStatus($event)" [task]="task" *ngFor="let task of tasks"></app-task>
   </mat-accordion>
-
   <h1 *ngIf="tasks.length == 0"> No tasks were found.</h1>
+  <button style="margin-top: 20px; width: 100%" mat-stroked-button color="primary" routerLink="/todo/new">Add task</button>
 </div>
 

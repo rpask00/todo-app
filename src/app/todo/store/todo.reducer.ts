@@ -1,9 +1,9 @@
 import {createReducer, on} from '@ngrx/store';
-import {initialState, Task} from "./app.state";
-import {addTask, loadTasksSuccess, modifyTask, removeTask} from "./app.actions";
+import {initialState, Task} from "./todo.state";
+import {addTask, loadTasksSuccess, modifyTask, removeTask} from "./todo.actions";
 
 
-export const appReducer = createReducer(
+export const todoReducer = createReducer(
   initialState,
   on(loadTasksSuccess, (state, {tasks}) => ({...state, tasks})),
   on(addTask, (state, {task}) => ({...state, tasks: [...state.tasks, task]})),

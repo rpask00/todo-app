@@ -1,13 +1,13 @@
 import {createSelector} from "@ngrx/store";
-import {AppState, TaskStatus, Task} from "./app.state";
-import {GlobalState} from "../app.module";
+import {TodoState, TaskStatus, Task} from "./todo.state";
+import {AppState} from "../../app.module";
 
-export const selectRootState = (state: GlobalState) => state.root;
+export const selectRootState = (state: AppState) => state.todo;
 
 
 export const selectTasks = (status?: TaskStatus) => createSelector(
   selectRootState,
-  (state: AppState) => state.tasks?.filter((task) => !status || task.status === status)
+  (state: TodoState) => state.tasks?.filter((task) => !status || task.status === status)
 )
 
 export const selectTaskById = (id: number) => createSelector(

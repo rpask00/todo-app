@@ -1,11 +1,11 @@
 import {TestBed} from '@angular/core/testing';
 import {TaskFormService} from "./task-form.service";
-import {Task, TaskStatus} from "../../store/app.state";
+import {Task, TaskStatus} from "../../store/todo.state";
 import {firstValueFrom} from "rxjs";
 import {StoreModule} from "@ngrx/store";
-import {appReducer} from "../../store/app.reducer";
+import {todoReducer} from "../../store/todo.reducer";
 import {Actions, EffectsModule} from "@ngrx/effects";
-import {AppEffects} from "../../store/app.effects";
+import {TodoEffects} from "../../store/todo.effects";
 import {ToastrModule} from "ngx-toastr";
 
 // describe('TaskFormService', () => {
@@ -33,9 +33,9 @@ describe('TaskFormService', () => {
     TestBed.configureTestingModule({
       imports: [
         StoreModule.forRoot({
-          root: appReducer
+          root: todoReducer
         }),
-        EffectsModule.forRoot([AppEffects]),
+        EffectsModule.forRoot([TodoEffects]),
         ToastrModule.forRoot({
           positionClass: 'toast-bottom-right',
         }),

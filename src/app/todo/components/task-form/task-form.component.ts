@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {Task} from "../../store/app.state";
+import {Task} from "../../store/todo.state";
 import {TaskFormService} from "./task-form.service";
 
 @Component({

@@ -1,15 +1,15 @@
 import {Injectable} from "@angular/core";
 import {Store} from "@ngrx/store";
-import {GlobalState} from "../../app.module";
-import {addTask, modifyTask} from "../../store/app.actions";
-import {Task} from "../../store/app.state";
+import {AppState} from "../../../app.module";
+import {addTask, modifyTask} from "../../store/todo.actions";
+import {Task} from "../../store/todo.state";
 import {Observable} from "rxjs";
-import {selectTaskById} from "../../store/app.selectors";
+import {selectTaskById} from "../../store/todo.selectors";
 
 @Injectable()
 export class TaskFormService {
   constructor(
-    private _store: Store<GlobalState>,
+    private _store: Store<AppState>,
   ) {
   }
 

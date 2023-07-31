@@ -1,17 +1,15 @@
 import {Injectable} from '@angular/core';
-import {selectTasks} from "../store/app.selectors";
-import {GlobalState} from "../app.module";
+import {AppState} from "../../../app.module";
 import {Store} from "@ngrx/store";
-import {Task, TaskStatus} from "../store/app.state";
-import {modifyTask, removeTask} from "../store/app.actions";
+import {Task, TaskStatus} from "../../store/todo.state";
 import {Router} from "@angular/router";
+import {selectTasks} from "../../store/todo.selectors";
+import {modifyTask, removeTask} from "../../store/todo.actions";
 
 @Injectable()
-export class TodoService {
-
-
+export class TasksListService {
   constructor(
-    private store: Store<GlobalState>,
+    private store: Store<AppState>,
     private _router: Router,
   ) {
   }
@@ -34,7 +32,7 @@ export class TodoService {
     this._router.navigate(['todo', 'edit', task.id])
   }
 
-  deleteTask(task: Task) {
+  removeTask(task: Task) {
     this.store.dispatch(removeTask({id: task.id}))
   }
 

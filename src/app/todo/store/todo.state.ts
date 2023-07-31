@@ -12,10 +12,10 @@ export interface Task {
   dueDate: Date;
 }
 
-export interface AppState {
+export interface TodoState {
   tasks: Task[];
 }
 
-export const initialState: AppState = {
+export const initialState: TodoState = {
   tasks: []
 };

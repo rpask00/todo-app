@@ -1,5 +1,5 @@
 import {createAction, props} from '@ngrx/store';
-import {Task} from "./app.state";
+import {Task} from "./todo.state";
 
 export const loadTasks = createAction('[Root Component] load tasks');
 export const loadTasksSuccess = createAction('[Root Component] load tasks success', props<{ tasks: Task[] }>());
