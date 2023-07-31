@@ -3,11 +3,20 @@
   justify-content: space-between;
 }
 
+mat-panel-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
 @media (min-width: 600px) {
   mat-panel-title {
     font-size: 1.2rem;
   }
 }
+
+
 
 mat-panel-description{
   max-width: 60%;
