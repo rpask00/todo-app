@@ -1,8 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {firstValueFrom} from "rxjs";
-import {TaskStatus} from "../../store/app.state";
+import {Task} from "../../store/app.state";
 import {TaskFormService} from "./task-form.service";
 
 @Component({
@@ -11,63 +9,25 @@ import {TaskFormService} from "./task-form.service";
   styleUrls: ['./task-form.component.scss'],
   providers: [TaskFormService]
 })
-export class TaskFormComponent implements OnInit {
+export class TaskFormComponent {
   readonly taskId = parseInt(this._route.snapshot.paramMap.get('id') || '0', 10);
+  readonly task$ = this._taskFormServiceService.getTaskById$(this.taskId);
 
   constructor(
-    private _fb: FormBuilder,
     private _route: ActivatedRoute,
     private _taskFormServiceService: TaskFormService,
     private _router: Router,
   ) {
   }
 
-  async ngOnInit() {
+
+  submit(task: Task) {
     if (this.taskId) {
-      this.loadTask();
-    }
-  }
-
-  readonly form: FormGroup = this._fb.group({
-    title: ['', Validators.required],
-    description: [''],
-    dueDate: [''],
-  });
-
-  async loadTask() {
-    if (!this.taskId) {
-      return
-    }
-
-    const task = await firstValueFrom(this._taskFormServiceService.getTaskById(this.taskId));
-
-    if (task) {
-      this.form.patchValue(task);
-    }
-  }
-
-
-  submit() {
-    if (this.taskId) {
-      this._taskFormServiceService.addNewTask({
-          ...this.form.value,
-          id: this.taskId,
-        }
-      );
+      this._taskFormServiceService.modifyTask({...task});
     } else {
-      this._taskFormServiceService.modifyTask({
-          ...this.form.value,
-          id: this.randomId(),
-          createdAt: new Date(),
-          status: TaskStatus.ACTIVE
-        }
-      );
+      this._taskFormServiceService.addNewTask({...task});
     }
 
     this._router.navigateByUrl('/todo/all');
-  }
-
-  randomId() {
-    return Math.floor(Math.random() * 10000000);
   }
 }

@@ -17,6 +17,4 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this._store.dispatch(loadTasks())
   }
-
-
 }

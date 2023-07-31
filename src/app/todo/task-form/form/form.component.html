@@ -1,0 +1,25 @@
+<form [formGroup]="form">
+  <h1>{{task ? 'Edit Task' : 'Add new Task'}}</h1>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Task title</mat-label>
+    <input formControlName="title" matInput placeholder="task title.....">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Task description</mat-label>
+    <textarea rows="7" formControlName="description" matInput placeholder="task description....."></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Select a due date</mat-label>
+    <input formControlName="dueDate" matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <button [disabled]="form.invalid"  (click)="submit()" mat-raised-button color="primary">Submit</button>
+</form>
+

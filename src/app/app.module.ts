@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {StoreModule} from "@ngrx/store";
@@ -26,6 +25,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {ToastrModule} from "ngx-toastr";
+import { FormComponent } from './todo/task-form/form/form.component';
 
 export interface GlobalState {
   root: AppState
@@ -36,7 +36,8 @@ export interface GlobalState {
     AppComponent,
     TasksListComponent,
     TaskComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +46,10 @@ export interface GlobalState {
       root: appReducer
     }),
     EffectsModule.forRoot([AppEffects]),
-    BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),
+    BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,

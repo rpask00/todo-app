@@ -1,7 +1,17 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {Store} from "@ngrx/store";
-import {addTask, loadTasks, loadTasksFailed, loadTasksSuccess, modifyTask, removeTask} from "./app.actions";
+import {
+  addTask,
+  addTaskSuccess,
+  loadTasks,
+  loadTasksFailed,
+  loadTasksSuccess,
+  modifyTask,
+  modifyTaskSuccess,
+  removeTask,
+  removeTaskSuccess
+} from "./app.actions";
 import {catchError, map, of, switchMap, tap} from "rxjs";
 import {selectTasks} from "./app.selectors";
 import {GlobalState} from "../app.module";
@@ -113,25 +123,20 @@ export class AppEffects {
   )
 
   showToast$ = createEffect(() =>
-      this._actions$.pipe(
-        ofType(addTask, modifyTask, removeTask),
-        tap((action) => {
-          switch (action.type) {
-            case addTask.type:
-              this._toastr.success('Task added successfully');
-              break;
-            case modifyTask.type:
-              this._toastr.info('Task modified successfully');
-              break;
-            case removeTask.type:
-              this._toastr.warning('Task removed successfully');
-              break;
-          }
-        })
-      ), {
-      dispatch: false
-    }
-  )
-
-
+    this._actions$.pipe(
+      ofType(addTask, modifyTask, removeTask),
+      map((action) => {
+        switch (action.type) {
+          case addTask.type:
+            this._toastr.success('Task added successfully');
+            return addTaskSuccess();
+          case modifyTask.type:
+            this._toastr.info('Task modified successfully');
+            return modifyTaskSuccess();
+          case removeTask.type:
+            this._toastr.warning('Task removed successfully');
+            return removeTaskSuccess();
+        }
+      })
+    ))
 }
