@@ -12,7 +12,7 @@ import {Task} from "../../store/todo.state";
 })
 export class TasksListComponent {
   constructor(
-    private _todoService: TasksListService,
+    private _tasksListService: TasksListService,
     private _route: ActivatedRoute,
   ) {
   }
@@ -22,22 +22,21 @@ export class TasksListComponent {
   )
 
   readonly tasks$ = this.state$.pipe(
-    switchMap(state => this._todoService.getTasks$(state)),
+    switchMap(state => this._tasksListService.getTasks$(state)),
     map(tasks => tasks.sort((a, b) =>
       new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     ))
   )
 
   changeTaskStatus(task: Task) {
-    this._todoService.changeTaskStatus(task);
+    this._tasksListService.changeTaskStatus(task);
   }
 
   editTask(task: Task) {
-    this._todoService.editTask(task);
+    this._tasksListService.editTask(task);
   }
 
   removeTask(task: Task) {
-    this._todoService.removeTask(task);
-
+    this._tasksListService.removeTask(task);
   }
 }

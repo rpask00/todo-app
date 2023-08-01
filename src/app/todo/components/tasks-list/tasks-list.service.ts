@@ -27,7 +27,6 @@ export class TasksListService {
     }))
   }
 
-
   editTask(task: Task) {
     this._router.navigate(['todo', 'edit', task.id])
   }
