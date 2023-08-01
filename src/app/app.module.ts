@@ -22,7 +22,6 @@ export interface AppState {
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,

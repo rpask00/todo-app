@@ -2,11 +2,11 @@ import {createSelector} from "@ngrx/store";
 import {TodoState, TaskStatus, Task} from "./todo.state";
 import {AppState} from "../../app.module";
 
-export const selectRootState = (state: AppState) => state.todo;
+export const selectTodoState = (state: AppState) => state.todo;
 
 
 export const selectTasks = (status?: TaskStatus) => createSelector(
-  selectRootState,
+  selectTodoState,
   (state: TodoState) => state.tasks?.filter((task) => !status || task.status === status)
 )
 

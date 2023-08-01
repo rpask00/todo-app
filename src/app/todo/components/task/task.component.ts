@@ -14,4 +14,7 @@ export class TaskComponent {
   @Output() editTask = new EventEmitter<Task>();
   constructor() {}
 
+  get key(): string {
+    return `opened-${this.task?.id}`;
+  }
 }
